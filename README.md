@@ -1,18 +1,18 @@
 # alex-easley-p0
 #Both users (Townsman and Provider) can:
 
-Log in to an existing account
+<ul>Log in to an existing account</ul>
 
-:Townsman can:
+Townsman can:
 
-Register for a Townsman account
-
+<ol>Register for a Townsman account
+<br> 
 Log their current supplies
-
+<br> 
 Create a request for supplies
+<br> 
+Set the priority level for supply need</ol>
 
-Set the priority level for supply need
+Employee can:
 
-:Employee can:
-
-Accept a supply request
+<ol>Accept a supply request</ol>
