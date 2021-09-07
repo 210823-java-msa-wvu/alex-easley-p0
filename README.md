@@ -1,5 +1,5 @@
 # alex-easley-p0
-## Both users (Townsman and Provider) can:
+Both users (Townsman and Provider) can:
 
 <ul>Log in to an existing account</ul>
 
