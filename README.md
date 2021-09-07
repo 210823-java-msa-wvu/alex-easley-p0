@@ -9,10 +9,11 @@ Townsman can:
 <br> 
 Log their current supplies
 <br> 
-Create a request for supplies
+Create a request for supplies from predefined list
 <br> 
 Set the priority level for supply need</ol>
 
 Employee can:
 
 <ol>Accept a supply request</ol>
+<ol>Edit list of supplies<ol>
