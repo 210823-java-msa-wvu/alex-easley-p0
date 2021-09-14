@@ -21,65 +21,67 @@ public class AppDriver {
 
 
     public static void main(String[] args) {
+    Boolean running = true;
+    while (running) {
+    System.out.println("Welcome Citizen.\nSelect An Option Below.");
+    System.out.println("1. Login\n2. Create an Account\n3. Quit");
 
+    int input = scanner.nextInt();
 
-        System.out.println("Welcome Citizen.\nSelect An Option Below.");
-        System.out.println("1. Login\n2. Create an Account\n3. Quit");
+    switch (input) {
 
-        int input = scanner.nextInt();
+        case 1: {
 
-       switch (input) {
+            scanner.nextLine();
 
-            case 1: {
+            System.out.println("Enter your username: ");
+            String username = scanner.nextLine();
 
-                scanner.nextLine();
+            System.out.println("Enter your password: ");
+            String password = scanner.nextLine();
 
-                System.out.println("Enter your username: ");
-                String username = scanner.nextLine();
+            AppDriver.user = userServices.getUser(username);
+            boolean signInResponse = userServices.login(username, password);
 
-                System.out.println("Enter your password: ");
-                String password = scanner.nextLine();
-
-                AppDriver.user = userServices.getUser(username);
-                boolean signInResponse = userServices.login(username, password);
-
-                if (signInResponse) {
-                    System.out.println("Success. Logging in...");
-                    switch2();
-                } else {
-                    System.out.println("Invalid Credentials. Try Again...");}
-                    break;
-
+            if (signInResponse) {
+                System.out.println("Success. Logging in...");
+                switch2();
+            } else {
+                System.out.println("Invalid Credentials. Try Again...");
             }
-            case 2: {
-                scanner.nextLine();
+            break;
 
-                System.out.println("Enter a username:");
-                String username = scanner.nextLine();
-                System.out.println("Enter a password:");
-                String password = scanner.nextLine();
-                System.out.println("Are you a Townsman or Provider?");
-                String user_type = scanner.nextLine();
+        }
+        case 2: {
+            scanner.nextLine();
+
+            System.out.println("Enter a username:");
+            String username = scanner.nextLine();
+            System.out.println("Enter a password:");
+            String password = scanner.nextLine();
+            System.out.println("Are you a Townsman or Provider?");
+            String user_type = scanner.nextLine();
             try {
                 userServices.accountCreation(username, password, user_type);
             } catch (InvalidCharacterException ex) {
                 System.out.println("Invalid Character in Username");
-                }
-
-                break;
             }
 
-            case 3: {
-                System.out.println("Goodbye...");
-                break;
-            }
-
-           default: {
-               System.out.println("Invalid Entry");
-           }
+            break;
         }
 
-        scanner.close();
+        case 3: {
+            System.out.println("Goodbye...");
+            running = false;
+            break;
+        }
+
+        default: {
+            System.out.println("Invalid Entry");
+        }
+    }
+
+}
 
     }
 
@@ -162,7 +164,7 @@ public class AppDriver {
                 }
             }
             case 5: {
-
+                main(null);
                 System.out.println("Goodbye");
                 break;
 

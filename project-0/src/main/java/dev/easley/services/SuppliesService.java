@@ -32,6 +32,7 @@ public class SuppliesService {
     public boolean createSupplies(String resources, Integer resource_amount, User user) {
         if (resources.equals("Medical") || resources.equals("Food") || resources.equals("Materials")){
             SuppliesRepo.createSupplies(resources, resource_amount, user);
+            return true;
         }
         return false;
     }
