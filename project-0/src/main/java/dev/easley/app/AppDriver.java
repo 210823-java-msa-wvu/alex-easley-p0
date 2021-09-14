@@ -91,7 +91,7 @@ public class AppDriver {
 
         System.out.println("----------------------------------");
         System.out.println("Hello " + usern + "! (" + user_type + ")\n:Home Screen:\nSelect an option below.");
-        System.out.println("1. Request Supplies\n2. Log Supplies\n3. View Your Supplies\n4. Edit Supplies (Providers Only)\n5. Quit");
+        System.out.println("1. Request Supplies\n2. Log Supplies\n3. View Your Supplies\n4. Fulfill Supply Request (Providers Only)\n5. Quit");
             int input = scanner.nextInt();
         switch(input) {
 
@@ -141,15 +141,15 @@ public class AppDriver {
             case 4: {
             if (user_type.equals("Provider")) {
                 System.out.println("----------------------------------");
-                System.out.println(":Current list of supplies:\nResource --- Amount --- Civilian Id");
-                suppliesService.suppliesList();
+                System.out.println(":Current list of supply requests:\nResource --- Amount --- Civilian Id");
+                suppliesService.supplyRequestList();
                 System.out.println("Which user (by ID)?");
                 Integer citizen_id = scanner.nextInt();
                 scanner.nextLine();
                 System.out.println("Which resource? |Food|Materials|Medical|");
                 String resources = scanner.nextLine();
 
-                boolean ss = suppliesService.updateSupplies(citizen_id, resources);
+                boolean ss = supplyRequestServices.updateSupplies(citizen_id, resources);
                 if (ss) {
                     System.out.println("Removal Completed.");
                 }else {

@@ -15,24 +15,6 @@ public class SuppliesRepo {
 
     ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
-    public void updateSupplies(String resources, Integer citizen_id) {
-
-        try (Connection conn = cu.getConnection()) {
-
-            String sql = "delete from supplies where citizen_id = ? and resource = ?";
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, citizen_id);
-            ps.setString(2, resources);
-
-            ps.executeUpdate();
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public void createSupplies(String resources, Integer resource_amount, User user) {
 
@@ -54,32 +36,6 @@ public class SuppliesRepo {
 
     }
 
-    public void getAllSupply() {
-
-        try (Connection conn = cu.getConnection()) {
-
-            String sql = "select * from supplies";
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-
-                String res = rs.getString("resource");
-                Integer res_am = rs.getInt("resource_amount");
-                Integer id = rs.getInt("citizen_id");
-                System.out.println("(" + res + " -- " + res_am + ", " + id + ")");
-
-
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 
     public void getSupplyById(Integer citizen_id) {
 

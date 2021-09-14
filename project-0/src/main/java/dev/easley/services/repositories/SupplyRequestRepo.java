@@ -5,6 +5,7 @@ import dev.easley.utils.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,6 +13,48 @@ public class SupplyRequestRepo implements CrudRepository<SupplyRequests> {
 
     ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
+    public void getAllSupply () {
+
+        try (Connection conn = cu.getConnection()) {
+
+            String sql = "select * from supply_requests order by requestor_id";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                String res = rs.getString("req_resource");
+                Integer res_am = rs.getInt("req_resource_amount");
+                Integer id = rs.getInt("requestor_id");
+                System.out.println("(" + res + " -- " + res_am + ", " + id + ")");
+
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateSupplies(String resources, Integer citizen_id) {
+
+        try (Connection conn = cu.getConnection()) {
+
+            String sql = "delete from supply_requests where requestor_id = ? and req_resource = ?";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, citizen_id);
+            ps.setString(2, resources);
+
+            ps.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void makeRequest(String resource, Integer resource_amount, Integer priority_level, Integer requester_id) {
 
         try (Connection conn = cu.getConnection()) {
@@ -33,7 +76,8 @@ public class SupplyRequestRepo implements CrudRepository<SupplyRequests> {
             e.printStackTrace();
         }
 
-    }
+        }
+
 
     @Override
     public SupplyRequests add(SupplyRequests supplyRequests) {

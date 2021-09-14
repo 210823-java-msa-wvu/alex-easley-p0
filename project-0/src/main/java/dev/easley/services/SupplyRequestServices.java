@@ -1,5 +1,6 @@
 package dev.easley.services;
 
+import dev.easley.services.repositories.SuppliesRepo;
 import dev.easley.services.repositories.SupplyRequestRepo;
 
 public class SupplyRequestServices {
@@ -15,5 +16,12 @@ public class SupplyRequestServices {
         }
         return false;
     }
+    public boolean updateSupplies(Integer citizen_id, String resources) {
+        if (resources.equals("Medical") || resources.equals("Food") || resources.equals("Materials")) {
 
+            SupplyRequestRepo.updateSupplies(resources, citizen_id);
+            return true;
+        }
+        return false;
+    }
 }

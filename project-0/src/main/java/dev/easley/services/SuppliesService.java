@@ -2,27 +2,22 @@ package dev.easley.services;
 
 import dev.easley.models.User;
 import dev.easley.services.repositories.SuppliesRepo;
+import dev.easley.services.repositories.SupplyRequestRepo;
 
 public class SuppliesService {
 
     SuppliesRepo SuppliesRepo = new SuppliesRepo();
+    SupplyRequestRepo supplyRequestRepo = new SupplyRequestRepo();
 
 
-    public boolean updateSupplies(Integer citizen_id, String resources) {
-        if (resources.equals("Medical") || resources.equals("Food") || resources.equals("Materials")) {
-
-            SuppliesRepo.updateSupplies(resources, citizen_id);
-            return true;
-        }
-        return false;
-    }
 
 
-    public boolean suppliesList() {
+
+    public boolean supplyRequestList() {
 
         if (true) {
 
-            SuppliesRepo.getAllSupply();
+            supplyRequestRepo.getAllSupply();
             return true;
         }
         return false;
