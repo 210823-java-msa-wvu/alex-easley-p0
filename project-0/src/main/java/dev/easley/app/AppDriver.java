@@ -5,7 +5,6 @@ import dev.easley.services.SuppliesService;
 import dev.easley.services.SupplyRequestServices;
 import dev.easley.services.UserServices;
 import dev.easley.services.exception.InvalidCharacterException;
-import dev.easley.services.repositories.UserRepo;
 
 import java.util.Scanner;
 
@@ -74,6 +73,10 @@ public class AppDriver {
                 System.out.println("Goodbye...");
                 break;
             }
+
+           default: {
+               System.out.println("Invalid Entry");
+           }
         }
 
         scanner.close();
@@ -163,6 +166,10 @@ public class AppDriver {
                 System.out.println("Goodbye");
                 break;
 
+            }
+            default: {
+                System.out.println("Invalid Entry");
+                switch2();
             }
         }
     }

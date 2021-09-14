@@ -12,7 +12,7 @@ public class UserServices {
 
     public void usernameValidation (String username) throws InvalidCharacterException {
         if (username.matches("[^a-zA-Z0-9]*")) {System.out.println(username);
-            throw new InvalidCharacterException("No Special Characters");
+            throw new InvalidCharacterException("Custom Exception: No Special Characters");
         }
 
     }
