@@ -11,9 +11,9 @@ Log their current supplies
 <br> 
 Create a request for supplies from predefined list
 <br> 
-Set the priority level for supply need</ol>
+View or delete their supply requests</ol>
 
 Provider can:
 
-<ol>Accept a supply request</ol>
-<ol>Edit list of supplies<ol>
+<ol>Fulfill a supply request</ol>
+
