@@ -6,6 +6,7 @@ import dev.easley.services.repositories.SupplyRequestRepo;
 public class SupplyRequestServices {
     dev.easley.services.repositories.SupplyRequestRepo SupplyRequestRepo = new SupplyRequestRepo();
 
+
     public boolean requestSupplies(String resource, Integer resource_amount, Integer priority_level, Integer requester_id) {
 
 
@@ -24,4 +25,20 @@ public class SupplyRequestServices {
         }
         return false;
     }
+    public boolean getSupplyRequestById(Integer user_id) {
+        if (true) {
+            SupplyRequestRepo.getSupplyRequestById(user_id);
+            return true;
+        }
+        return false;
+    }
+    public boolean deleteYourSupplies(Integer user_id) {
+
+        if (true) {
+            SupplyRequestRepo.updateYourSupplies(user_id);
+            return true;
+        } else return false;
+
+    }
 }
+

@@ -16,6 +16,8 @@ public class SuppliesRepo {
     ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
 
+
+
     public void createSupplies(String resources, Integer resource_amount, User user) {
 
         try (Connection conn = cu.getConnection()) {
@@ -37,33 +39,6 @@ public class SuppliesRepo {
     }
 
 
-    public void getSupplyById(Integer citizen_id) {
 
-        try (Connection conn = cu.getConnection()) {
-
-            String sql = "select * from supplies where citizen_id = ?";
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, citizen_id);
-
-            ResultSet rs = ps.executeQuery();
-            if (!rs.isBeforeFirst() ) {
-                System.out.println("No data");
-
-            }
-
-            while (rs.next()) {
-
-                String res = rs.getString("resource");
-                Integer res_am = rs.getInt("resource_amount");
-                System.out.println("(" + res + " -- " + res_am + ")");
-
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-    }
 }
 

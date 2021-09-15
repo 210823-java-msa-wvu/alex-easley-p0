@@ -13,6 +13,25 @@ public class SupplyRequestRepo implements CrudRepository<SupplyRequests> {
 
     ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
 
+    public void updateYourSupplies(Integer user_id) {
+
+        try (Connection conn = cu.getConnection()) {
+
+            String sql = "delete from supply_requests where requestor_id = ?";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, user_id);
+
+
+            ps.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void getAllSupply () {
 
         try (Connection conn = cu.getConnection()) {
@@ -77,6 +96,35 @@ public class SupplyRequestRepo implements CrudRepository<SupplyRequests> {
         }
 
         }
+
+    public void getSupplyRequestById(Integer user_id) {
+
+        try (Connection conn = cu.getConnection()) {
+
+            String sql = "select * from supply_requests where requestor_id = ?";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, user_id);
+
+            ResultSet rs = ps.executeQuery();
+            if (!rs.isBeforeFirst() ) {
+                System.out.println("No data");
+
+            }
+
+            while (rs.next()) {
+
+                String res = rs.getString("req_resource");
+                Integer res_am = rs.getInt("req_resource_amount");
+                System.out.println("(" + res + " -- " + res_am + ")");
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
 
 
     @Override

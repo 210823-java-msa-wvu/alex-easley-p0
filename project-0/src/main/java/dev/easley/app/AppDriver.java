@@ -91,7 +91,7 @@ public class AppDriver {
 
         System.out.println("----------------------------------");
         System.out.println("Hello " + usern + "! (" + user_type + ")\n:Home Screen:\nSelect an option below.");
-        System.out.println("1. Request Supplies\n2. Log Supplies\n3. View Your Supplies\n4. Fulfill Supply Request (Providers Only)\n5. Quit");
+        System.out.println("1. Request Supplies\n2. Log Supplies\n3. View/Delete Your Supply Requests\n4. Fulfill Supply Request (Providers Only)\n5. Quit");
             int input = scanner.nextInt();
         switch(input) {
 
@@ -128,15 +128,22 @@ public class AppDriver {
                      System.out.println("Supplies Added");
                  }else {
                      System.out.println("Resource not recognized. Please only input |Food|Materials|Medical|");
-                 switch2();
-                 }
+
+                 }switch2();
              break;
         }
             case 3: {
-                   suppliesService.getSuppliesById(user.getUser_id());
-                }
-                switch2();
+                scanner.nextLine();
+                supplyRequestServices.getSupplyRequestById(user.getUser_id());
 
+                System.out.println("Do you want to delete your supply requests?");
+                String response = scanner.nextLine();
+                if (response.equals("yes")) {
+                    supplyRequestServices.deleteYourSupplies(user.getUser_id());
+                }
+                System.out.println("Done");
+                switch2();
+            }
                 break;
             case 4: {
             if (user_type.equals("Provider")) {
